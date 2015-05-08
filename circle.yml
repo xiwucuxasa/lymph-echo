@@ -2,6 +2,15 @@ machine:
   services:
       - docker
 
+dependencies:
+    cache_directories:
+        - "~/docker"
+    override:
+        - docker info
+        - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
+        - docker build -t xiwucuxasa/lymph-echo .
+        - mkdir -p ~/docker; docker save xiwucuxasa/lymph-echo > ~/docker/image.tar
+
 test:
     override:
         - nosetests --with-lymph
