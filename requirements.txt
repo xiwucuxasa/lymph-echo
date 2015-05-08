@@ -1,1 +1,1 @@
-git+ssh://git@github.com/deliveryhero/lymph@master#egg=lymph
+https://github.com/deliveryhero/lymph/archive/master.zip
