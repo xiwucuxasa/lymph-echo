@@ -5,17 +5,13 @@ machine:
 dependencies:
     cache_directories:
         - "~/docker"
-    override:
-        - docker info
-        - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-        - docker build -t xiwucuxasa/lymph-echo .
-        - mkdir -p ~/docker; docker save xiwucuxasa/lymph-echo > ~/docker/image.tar
 
 test:
     override:
-    # post:
        - nosetests --with-lymph
-       - docker run "xiwucuxasa/lymph-echo" nosetests
+       - docker info
+       - docker build -t xiwucuxasa/lymph-echo .
+       - docker run "xiwucuxasa/lymph-echo" nosetests --with-lymph
 
 deployment:
     hub:
