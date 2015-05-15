@@ -8,10 +8,15 @@ dependencies:
 
 test:
     override:
+       # plain unit tests
        - nosetests --with-lymph
        - docker info
        - docker build -t xiwucuxasa/lymph-echo .
+       # unit tests inside container
+       - nosetests --with-lymph
        - docker run "xiwucuxasa/lymph-echo" nosetests --with-lymph
+       # integration tests inside container
+       - docker run "xiwucuxasa/lymph-echo" lymph request echo.echo '{"text": "ciao!"}'
 
 deployment:
     hub:
