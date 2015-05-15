@@ -1,1 +1,2 @@
 https://github.com/deliveryhero/lymph/archive/master.zip
+nose
