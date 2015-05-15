@@ -13,8 +13,8 @@ dependencies:
 
 test:
     override:
-    #    - nosetests --with-lymph
     # post:
+       - nosetests --with-lymph
        - docker run "xiwucuxasa/lymph-echo" nosetests
 
 deployment:
